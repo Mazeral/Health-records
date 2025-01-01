@@ -5,6 +5,7 @@ We are seperating the run and app file to prevent ciruclar depedency
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_redis import FlaskRedis
+from .config import Config
 
 # Initialize extensions
 db = SQLAlchemy()
@@ -18,11 +19,17 @@ def create_app():
     app = Flask(__name__)
 
     # Load configuration
-    app.config.from_pyfile('config.py')
+    app.config.from_object(Config)
+    # Debug: Print the database URI
+    print("Database URI:", app.config['SQLALCHEMY_DATABASE_URI'])
 
-    # Initialize extensions with the app
+    # Initialize SQLAlchemy and redis with the app
     db.init_app(app)
     redis_client.init_app(app)
+
+    # Create database tables (if they don't exist)
+    with app.app_context():
+        db.create_all()
 
     # Register blueprints or routes
     # from .routes import main_bp
