@@ -10,7 +10,7 @@ class Patient(db.Model):
     first_name = db.Column(db.String(50), nullable=False)
     last_name = db.Column(db.String(50), nullable=False)
     date_of_birth = db.Column(db.Date, nullable=False)
-    gender = db.Column(db.String(10), nullable=False)
+    sex = db.Column(db.String(10), nullable=False)
     contact_number = db.Column(db.String(15), nullable=False)
     email = db.Column(db.String(100), unique=True, nullable=False)
     created_at = db.Column(db.DateTime, default=db.func.current_timestamp())
