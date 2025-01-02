@@ -2,7 +2,7 @@
 Contains the CRUD methods
 """
 
-from ... import db
+from .. import db
 from ..models.doctor import Doctor
 
 

@@ -32,11 +32,11 @@ def create_app():
         db.create_all()
 
     # Register blueprints or routes
-    from blueprints import doctor
-    from blueprints import patient
-    from blueprints import health_records
-    app.register_blueprint(doctor)
-    app.register_blueprint(health_records)
-    app.register_blueprint(patient)
+    # from blueprints import doctor
+    # from blueprints import patient
+    # from blueprints import health_records
+    # app.register_blueprint(doctor)
+    # app.register_blueprint(health_records)
+    # app.register_blueprint(patient)
 
     return app
