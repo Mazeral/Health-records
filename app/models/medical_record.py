@@ -1,7 +1,7 @@
 """medical record model
 SQLAlchemy model reprenting the medical record of the patient data"""
 
-from ...app import db
+from .. import db
 
 
 class MedicalRecord(db.Model):

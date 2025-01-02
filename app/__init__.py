@@ -3,8 +3,8 @@ We are seperating the run and app file to prevent ciruclar depedency
 """
 
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
 from flask_redis import FlaskRedis
+from flask_sqlalchemy import SQLAlchemy
 from .config import Config
 
 # Initialize extensions
@@ -32,7 +32,11 @@ def create_app():
         db.create_all()
 
     # Register blueprints or routes
-    # from .routes import main_bp
-    # app.register_blueprint(main_bp)
+    from blueprints import doctor
+    from blueprints import patient
+    from blueprints import health_records
+    app.register_blueprint(doctor)
+    app.register_blueprint(health_records)
+    app.register_blueprint(patient)
 
     return app
